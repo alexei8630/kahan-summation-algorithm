@@ -28,3 +28,10 @@ Adding many `number`s in JavaScript with `+` accumulates rounding error proporti
 ## The awkward edge
 
 Once the stream contains a non-finite value there is no meaningful sum to recover, so the summator records that value as its state and ignores everything after it. A NaN recorded later overrides a previously recorded Infinity; an Infinity does not override a NaN. If your input may contain non-finite values, check `add`'s return value or `value()` against `Number.isFinite` rather than assuming the result is always a real number.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
