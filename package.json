@@ -1,6 +1,6 @@
 {
   "name": "kahan-summation-algorithm",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Sums a sequence of floating-point numbers while compensating for accumulated rounding error.",
   "type": "module",
   "main": "src/index.js",
